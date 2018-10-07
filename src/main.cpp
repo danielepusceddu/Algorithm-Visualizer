@@ -6,6 +6,7 @@ int main(){
     while(visualizer.isRunning()){
         visualizer.update();
         visualizer.handleEvents();
+        sf::sleep(sf::milliseconds(25));
     }
 
     return 0;

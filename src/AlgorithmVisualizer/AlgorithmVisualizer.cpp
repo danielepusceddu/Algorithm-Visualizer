@@ -78,7 +78,7 @@ void AlgorithmVisualizer::initWindow(){
 void AlgorithmVisualizer::reset(){
     //randSeed = time
     randSeed = std::chrono::system_clock::now().time_since_epoch().count();
-    initVec(200);
+    initVec(50);
     initAlg(algType);
 }
 
