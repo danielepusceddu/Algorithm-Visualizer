@@ -1,4 +1,5 @@
 #include "AlgorithmVisualizer.hpp"
+#include <iostream>
 
 namespace Alg{
 
@@ -103,6 +104,10 @@ namespace Alg{
             default:
             case Alg::Type::BubbleSort:
             this->algorithm.reset(new BubbleSort{vec});
+            break;
+
+            case Alg::Type::InsertSort:
+            this->algorithm.reset(new InsertSort{vec});
             break;
         }
     }

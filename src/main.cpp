@@ -8,7 +8,7 @@ int main(int argc, char **argv){
     int msToSleep = 25;
     parseArgs(argc, argv, numElements, msToSleep);
     
-    Alg::Visualizer visualizer{Alg::Type::BubbleSort, numElements};
+    Alg::Visualizer visualizer{Alg::Type::InsertSort, numElements};
 
     while(visualizer.isRunning()){
         visualizer.update();

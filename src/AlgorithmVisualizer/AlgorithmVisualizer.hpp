@@ -7,6 +7,7 @@
 #include <array>
 #include <chrono>
 #include "../Algorithm/BubbleSort.hpp"
+#include "../Algorithm/InsertSort.hpp"
 #include "../Algorithm/AlgTypesEnum.hpp"
 
 namespace Alg{

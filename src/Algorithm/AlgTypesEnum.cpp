@@ -10,6 +10,9 @@ namespace Alg{
         if(str == "bubblesort")
             type = Type::BubbleSort;
 
+        else if(str == "insertsort")
+            type = Type::InsertSort;
+
         //I need to replace this with std::optional
         else type = static_cast<Type>(-1);
 
