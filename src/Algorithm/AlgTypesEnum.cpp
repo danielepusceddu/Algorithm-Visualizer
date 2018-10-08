@@ -7,10 +7,10 @@ namespace Alg{
         Type type;
 
         Helpers::toLower(str);
-        if(str == "bubblesort")
+        if(str == "bubble" || str == "bubblesort" )
             type = Type::BubbleSort;
 
-        else if(str == "insertsort")
+        else if(str == "insert" || str == "insertsort")
             type = Type::InsertSort;
 
         //I need to replace this with std::optional
