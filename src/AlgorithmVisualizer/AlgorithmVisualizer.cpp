@@ -43,8 +43,9 @@ namespace Alg{
                 //User pressed a key
                 case sf::Event::KeyPressed:
                 switch(event.key.code){
-                    //ESC (quit)
+                    //ESC / Q (quit)
                     case sf::Keyboard::Escape:
+                    case sf::Keyboard::Q:
                     running = false;
                     break;
 
