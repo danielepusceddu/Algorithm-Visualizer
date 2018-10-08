@@ -8,7 +8,7 @@ namespace Alg{
     }
 
 
-    Visualizer::Visualizer(Visualizer::AlgType alg)
+    Visualizer::Visualizer(Alg::Type alg)
         : algType{alg} {
         initWindow();
         reset();
@@ -96,10 +96,10 @@ namespace Alg{
 
 
 
-    void Visualizer::initAlg(Visualizer::AlgType alg){
+    void Visualizer::initAlg(Alg::Type alg){
         switch(alg){
             default:
-            case Visualizer::AlgType::BubbleSort:
+            case Alg::Type::BubbleSort:
             this->algorithm.reset(new BubbleSort{vec});
             break;
         }

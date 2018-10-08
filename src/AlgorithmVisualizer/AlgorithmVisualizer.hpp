@@ -7,17 +7,14 @@
 #include <array>
 #include <chrono>
 #include "../Algorithm/BubbleSort.hpp"
+#include "../Algorithm/AlgTypesEnum.hpp"
 
 namespace Alg{
 
     class Visualizer{
-        public:
-        //enum for possible algorithms
-        enum class AlgType{BubbleSort};
-
         private:
         //Attributes
-        AlgType algType;
+        Alg::Type algType;
         unsigned int randSeed;
         std::unique_ptr<sf::RenderWindow> window;
         std::unique_ptr<Algorithm> algorithm;
@@ -27,14 +24,14 @@ namespace Alg{
 
         //Private Methods
         void initWindow();
-        void initAlg(AlgType alg);
+        void initAlg(Alg::Type alg);
         void initVec(int size);
         void visualizeVec();
         void reset();
 
         public:
         //Public Methods
-        Visualizer(AlgType alg);
+        Visualizer(Alg::Type alg);
         void update();
         void handleEvents();
         bool isRunning();
