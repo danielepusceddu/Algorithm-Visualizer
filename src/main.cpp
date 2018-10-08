@@ -1,7 +1,7 @@
 #include "AlgorithmVisualizer/AlgorithmVisualizer.hpp"
 
 int main(){
-    AlgorithmVisualizer visualizer{AlgorithmVisualizer::AlgType::BubbleSort};
+    Alg::Visualizer visualizer{Alg::Visualizer::AlgType::BubbleSort};
 
     while(visualizer.isRunning()){
         visualizer.update();
