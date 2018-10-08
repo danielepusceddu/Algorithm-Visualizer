@@ -1,38 +1,51 @@
 #include "AlgorithmVisualizer/AlgorithmVisualizer.hpp"
 #include <string>
 
-void parseArgs(int argc, char **argv, int &numElements);
+void parseArgs(int argc, char **argv, int &numElements, int &msToSleep);
 
 int main(int argc, char **argv){
     int numElements = 50;
-    parseArgs(argc, argv, numElements);
+    int msToSleep = 25;
+    parseArgs(argc, argv, numElements, msToSleep);
     
     Alg::Visualizer visualizer{Alg::Type::BubbleSort, numElements};
 
     while(visualizer.isRunning()){
         visualizer.update();
         visualizer.handleEvents();
-        sf::sleep(sf::milliseconds(25));
+        sf::sleep(sf::milliseconds(msToSleep));
     }
 
     return 0;
 }
 
 
-void parseArgs(int argc, char **argv, int &numElements){
-    //For each optional argument
-    for(int i = 1; i < argc; i++){
+void parseArgs(int argc, char **argv, int &numElements, int &msToSleep){
+    //For each possible command line option
+    for(int i = 1; i < argc - 1; i++){
         std::string arg{argv[i]};
 
-        //If arg is number of elements and there is at least one more arg to process
-        if(arg == "-e" && i < argc - 1){
-            int atoi = std::atoi(argv[i+1]);
+        //If option is number of elements
+        if(arg == "-e"){
+            int arg2int = std::atoi(argv[i+1]);
 
-            //If next arg is a valid number
-            if(atoi > 0){
-                numElements = atoi;
+            //If next arg is a valid amount of elements
+            if(arg2int > 0){
+                numElements = arg2int;
                 i++;
             }
-        }
-    }
-}
+        } //end -e
+
+
+        //Else if option is milliseconds to sleep in each loop
+        else if(arg == "-s"){
+            int arg2int = std::atoi(argv[i+1]);
+
+            if(arg2int >= 0){
+                msToSleep = arg2int;
+                i++;
+            }
+        } //end -s
+
+    } //end for
+} //end parseArgs
