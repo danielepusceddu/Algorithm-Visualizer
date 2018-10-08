@@ -2,11 +2,10 @@
 #include "Algorithm.hpp"
 
 namespace Alg{
-    
+
     class BubbleSort : public Algorithm{
         private:
         int i = 1;
-        int n;
         bool swapped = false;
         void swap(int &x, int &y);
 

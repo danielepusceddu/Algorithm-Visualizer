@@ -2,8 +2,8 @@
 
 namespace Alg{
 
-    
-    InsertSort::InsertSort(std::vector<int> &vector) : Algorithm{vector}, n{(int)vector.size()}{
+
+    InsertSort::InsertSort(std::vector<int> &vector) : Algorithm{vector}{
         if(n > 1)
             key = vec[i];
 

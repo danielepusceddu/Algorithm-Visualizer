@@ -5,7 +5,6 @@ namespace Alg{
 
     class InsertSort : public Algorithm{
         private:
-        int n;
         int key;
         int i = 1;
         int j = 0;

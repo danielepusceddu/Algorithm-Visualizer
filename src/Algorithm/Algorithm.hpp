@@ -6,10 +6,11 @@ namespace Alg{
     class Algorithm{
         protected:
         std::vector<int> &vec;
+        int n;
         bool finished = false;
 
         public:
-        Algorithm(std::vector<int> &vector) : vec{vector} {};
+        Algorithm(std::vector<int> &vector) : vec{vector}, n{(int)vec.size()}{};
         virtual ~Algorithm() = default;
 
         std::vector<int>& getVec() const {return vec;}

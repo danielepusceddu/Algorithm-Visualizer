@@ -6,8 +6,7 @@
 namespace Alg{
 
     //Constructor
-    BubbleSort::BubbleSort(std::vector<int> &vector)
-    : Algorithm{vector}, n{(int)vector.size()}{}
+    BubbleSort::BubbleSort(std::vector<int> &vector): Algorithm{vector}{}
 
 
 
