@@ -15,6 +15,8 @@ namespace Alg{
         private:
         //Attributes
         Alg::Type algType;
+        int numVecElements;
+
         unsigned int randSeed;
         std::unique_ptr<sf::RenderWindow> window;
         std::unique_ptr<Algorithm> algorithm;
@@ -24,14 +26,14 @@ namespace Alg{
 
         //Private Methods
         void initWindow();
-        void initAlg(Alg::Type alg);
-        void initVec(int size);
+        void initAlg();
+        void initVec();
         void visualizeVec();
         void reset();
 
         public:
         //Public Methods
-        Visualizer(Alg::Type alg);
+        Visualizer(Alg::Type alg, int numElements);
         void update();
         void handleEvents();
         bool isRunning();

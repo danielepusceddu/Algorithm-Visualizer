@@ -8,8 +8,8 @@ namespace Alg{
     }
 
 
-    Visualizer::Visualizer(Alg::Type alg)
-        : algType{alg} {
+    Visualizer::Visualizer(Alg::Type alg, int numElements)
+        : algType{alg}, numVecElements{numElements} {
         initWindow();
         reset();
     }
@@ -80,16 +80,16 @@ namespace Alg{
     void Visualizer::reset(){
         //randSeed = time
         randSeed = std::chrono::system_clock::now().time_since_epoch().count();
-        initVec(50);
-        initAlg(algType);
+        initVec();
+        initAlg();
     }
 
 
 
-    void Visualizer::initVec(int size){
-        vec.resize(size);
+    void Visualizer::initVec(){
+        vec.resize(numVecElements);
 
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < numVecElements; i++)
             vec[i] = i + 1;
 
         std::shuffle(vec.begin(), vec.end(), std::default_random_engine{randSeed});
@@ -97,8 +97,8 @@ namespace Alg{
 
 
 
-    void Visualizer::initAlg(Alg::Type alg){
-        switch(alg){
+    void Visualizer::initAlg(){
+        switch(algType){
             default:
             case Alg::Type::BubbleSort:
             this->algorithm.reset(new BubbleSort{vec});
