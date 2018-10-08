@@ -73,6 +73,7 @@ namespace Alg{
 
     void Visualizer::initWindow(){
         window.reset(new sf::RenderWindow{sf::VideoMode(1080, 720), "Algorithm Visualizer"});
+        window->setVerticalSyncEnabled(true);
     }
 
 
