@@ -10,7 +10,9 @@ set(CMAKE_CXX_FLAGS -Wall)
 #Source file list
 set(SOURCE_FILES src/main.cpp 
                  src/AlgorithmVisualizer/AlgorithmVisualizer.cpp
-                 src/Algorithm/BubbleSort.cpp)
+                 src/Algorithm/BubbleSort.cpp
+                 src/Algorithm/AlgTypesEnum.cpp
+                 src/Helpers/Helpers.cpp)
 
 
 add_executable(AlgorithmVisualizer ${SOURCE_FILES})
