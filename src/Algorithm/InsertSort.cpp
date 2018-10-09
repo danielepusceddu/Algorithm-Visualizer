@@ -12,23 +12,21 @@ namespace Alg{
 
     void InsertSort::step(){
 
-        if(finished == false){
+        while(i < n){
 
-            if(j >= 0 && vec[j] > vec[j + 1]){
+            while(j >= 0 && vec[j] > vec[j + 1]){
                 vec[j + 1] = vec[j];
                 vec[j] = key;
                 j--;
+                return; //yield
             }
 
-            else if(++i < n){
-                j = i - 1;
-                key = vec[i];
-            }
-
-            else finished = true;
-
+            i++;
+            j = i - 1;
+            key = vec[i];
         }
 
+        finished = true;
     }
 
 
