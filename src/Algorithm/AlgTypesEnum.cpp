@@ -19,4 +19,25 @@ namespace Alg{
         return type;
     }
 
+
+    std::string algType2string(Type alg){
+        std::string str;
+
+        switch(alg){
+            case Type::BubbleSort:
+            str = "Bubble Sort";
+            break;
+
+            case Type::InsertSort:
+            str = "Insert Sort";
+            break;
+
+            default:
+            str = "Null";
+            break;
+        }
+
+        return str;
+    }
+
 }

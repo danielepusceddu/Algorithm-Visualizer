@@ -1,13 +1,16 @@
 #include "AlgorithmVisualizer/AlgorithmVisualizer.hpp"
+#include <iostream>
 #include <string>
 
 void parseArgs(int argc, char **argv, int &numElements, int &msToSleep, Alg::Type &alg);
+void printArgs(Alg::Type alg, int numElements, int msToSleep);
 
 int main(int argc, char **argv){
     Alg::Type algorithm = Alg::Type::BubbleSort;
     int numElements = 50;
     int msToSleep = 25;
     parseArgs(argc, argv, numElements, msToSleep, algorithm);
+    printArgs(algorithm, numElements, msToSleep);
     
     Alg::Visualizer visualizer{algorithm, numElements};
     while(visualizer.isRunning()){
@@ -61,3 +64,10 @@ void parseArgs(int argc, char **argv, int &numElements, int &msToSleep, Alg::Typ
 
     } //end for
 } //end parseArgs
+
+
+void printArgs(Alg::Type alg, int numElements, int msToSleep){
+    std::cout << "Algorithm: " << Alg::algType2string(alg) << "\n"
+              << "Size of Vector: " << numElements << "\n"
+              << "Sleeping " << msToSleep << "ms every loop cycle." << std::endl;
+}
