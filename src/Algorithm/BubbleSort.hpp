@@ -12,6 +12,7 @@ namespace Alg{
         public:
         BubbleSort(std::vector<int> &vector);
         void step() override;
+        void run() override;
     };
 
 }

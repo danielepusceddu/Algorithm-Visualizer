@@ -16,7 +16,7 @@ namespace Alg{
         std::vector<int>& getVec() const {return vec;}
         bool isFinished() const {return finished;}
         virtual void step() = 0; //pure virtual function
-
+        virtual void run() = 0; //pure virtual function
     };
 
 }
