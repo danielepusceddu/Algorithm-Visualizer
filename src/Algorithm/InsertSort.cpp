@@ -14,16 +14,31 @@ namespace Alg{
 
         while(i < n){
 
-            while(j >= 0 && vec[j] > vec[j + 1]){
-                vec[j + 1] = vec[j];
-                vec[j] = key;
+            //swapShowed is so we can show the changes in the selected elements
+            while(j >= 0 && (vec[j] > vec[j + 1] || swapShowed)){
+
+                //If we haven't swapped
+                //(vec[j] > vec[j + 1]) will be false after executing this block
+                //swapShowed will allow us to keep sorting
+                if(!swapShowed){
+                    vec[j + 1] = vec[j];
+                    vec[j] = key;
+                    swapShowed = true;
+                    return; 
+                }
+
                 j--;
-                return; //yield
+                swapShowed = false;
+                if(j >= 0) //this check is to avoid showing vec[-1] as a selected element
+                    return; //yield
             }
 
             i++;
             j = i - 1;
             key = vec[i];
+
+            if(i < n) //this check is to avoid showing vec[n] as a selected element
+                return; //yield
         }
 
         finished = true;
@@ -52,7 +67,7 @@ namespace Alg{
         std::vector<int> selected;
 
         if(!finished)
-            selected = {i, j, key};
+            selected = {i, j, j+1};
 
         return selected;
     }
