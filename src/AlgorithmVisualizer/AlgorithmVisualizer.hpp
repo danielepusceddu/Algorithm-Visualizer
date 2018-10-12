@@ -15,6 +15,9 @@ namespace Alg{
 
     class Visualizer{
         private:
+        //Constants
+        const std::array<sf::Color, 3> colors = {sf::Color::Yellow, sf::Color::Green, sf::Color::Blue};
+
         //Attributes
         Alg::Type algType;
         int numVecElements;
@@ -23,6 +26,7 @@ namespace Alg{
         std::unique_ptr<sf::RenderWindow> window;
         std::unique_ptr<Algorithm> algorithm;
         std::vector<int> vec;
+        std::vector<int> selectedIndexes;
         bool running = true;
 
 

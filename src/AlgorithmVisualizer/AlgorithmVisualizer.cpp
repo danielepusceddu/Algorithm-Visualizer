@@ -22,6 +22,7 @@ namespace Alg{
             window->clear();
 
             algorithm->step();
+            selectedIndexes = algorithm->selectedElements();
             visualizeVec();
             
             window->display();
@@ -127,11 +128,20 @@ namespace Alg{
 
         //Init rectangle that will represent vec's elements
         sf::RectangleShape rectangle;
-        rectangle.setFillColor(sf::Color::White);
         float rectWidth = (float)windowSize.x / vecSize;
 
         //For each element
         for(int i = 0; i < vecSize; i++){
+            //See if it is currently selected
+            auto found = std::find(selectedIndexes.begin(), selectedIndexes.end(), i);
+
+            //If it's not, rectangle will be white
+            if(found == selectedIndexes.end())
+                rectangle.setFillColor(sf::Color::White);
+
+            //Else get the respective color
+            else rectangle.setFillColor(colors[(int)(found - selectedIndexes.begin())]);
+
             //Set rectangle height based on the element's value and window height
             float rectHeight = ((float)vec[i] / *max) * windowSize.y;
 
