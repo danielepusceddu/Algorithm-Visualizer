@@ -109,6 +109,9 @@ namespace Alg{
             case Alg::Type::InsertSort:
             this->algorithm.reset(new InsertSort{vec});
             break;
+
+            case Alg::Type::SelectionSort:
+            this->algorithm.reset(new SelectionSort{vec});
         }
     }
 
