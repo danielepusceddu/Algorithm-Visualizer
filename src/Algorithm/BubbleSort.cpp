@@ -54,6 +54,16 @@ namespace Alg{
     }
 
 
+    std::vector<int> BubbleSort::selectedElements(){
+        std::vector<int> selected;
+
+        if(!finished)
+            selected = {i, i - 1};
+
+        return selected;
+    }
+
+
 
     //PRIVATE METHODS
     void BubbleSort::swap(int &x, int &y){

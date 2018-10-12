@@ -40,6 +40,16 @@ namespace Alg{
     }
 
 
+    std::vector<int> SelectionSort::selectedElements(){
+        std::vector<int> selected;
+
+        if(!finished)
+            selected = {i, minimum, j};
+
+        return selected;
+    }
+
+
     void SelectionSort::swap(int &x, int &y){
         int z = x;
         x = y;

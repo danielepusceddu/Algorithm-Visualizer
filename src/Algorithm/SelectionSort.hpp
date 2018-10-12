@@ -12,6 +12,7 @@ namespace Alg{
 
         public:
         SelectionSort(std::vector<int> &vec);
+        std::vector<int> selectedElements() override;
         void run() override;
         void step() override;
     };

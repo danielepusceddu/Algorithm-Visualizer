@@ -13,6 +13,7 @@ namespace Alg{
         InsertSort(std::vector<int> &vector);
         void step() override;
         void run() override;
+        std::vector<int> selectedElements() override;
     };
 
 }

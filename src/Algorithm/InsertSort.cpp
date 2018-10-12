@@ -47,4 +47,14 @@ namespace Alg{
         finished = true;
     }
 
+
+    std::vector<int> InsertSort::selectedElements(){
+        std::vector<int> selected;
+
+        if(!finished)
+            selected = {i, j, key};
+
+        return selected;
+    }
+
 }

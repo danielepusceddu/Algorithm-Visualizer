@@ -17,6 +17,7 @@ namespace Alg{
         bool isFinished() const {return finished;}
         virtual void step() = 0; //pure virtual function
         virtual void run() = 0; //pure virtual function
+        virtual std::vector<int> selectedElements() = 0;
     };
 
 }
