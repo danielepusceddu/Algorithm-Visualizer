@@ -18,14 +18,20 @@ namespace Alg{
                 if(vec[i - 1] > vec[i]){
                     swap(vec[i - 1], vec[i]);
                     swapped = true;
+                    return; //yield to show the swap taking place.                    
                 }
 
                 i++;
-                return; //yield
+                //this conditional is to avoid showing vec[n] as selected
+                //if i < n, i = 1 (or finish) then yield
+                if(i < n) 
+                    return; //yield
             }
 
-            if(swapped)
+            if(swapped){
                 i = 1;
+                return; //yield
+            }
 
             else finished = true;
         }
