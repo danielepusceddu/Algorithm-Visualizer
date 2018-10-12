@@ -41,6 +41,13 @@ namespace Alg{
                 running = false;
                 break;
 
+                //User resized the window
+                case sf::Event::Resized:{
+                sf::FloatRect newViewRect{0, 0, (float)event.size.width, (float)event.size.height};
+                window->setView(sf::View{newViewRect});
+                }
+                break;
+
                 //User pressed a key
                 case sf::Event::KeyPressed:
                 switch(event.key.code){
