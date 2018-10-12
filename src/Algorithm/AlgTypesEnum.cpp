@@ -13,6 +13,9 @@ namespace Alg{
         else if(str == "insert" || str == "insertsort")
             type = Type::InsertSort;
 
+        else if(str == "selection" || str == "selectionsort")
+            type = Type::SelectionSort;
+
         //I need to replace this with std::optional
         else type = static_cast<Type>(-1);
 
@@ -30,6 +33,10 @@ namespace Alg{
 
             case Type::InsertSort:
             str = "Insert Sort";
+            break;
+
+            case Type::SelectionSort:
+            str = "Selection Sort";
             break;
 
             default:
