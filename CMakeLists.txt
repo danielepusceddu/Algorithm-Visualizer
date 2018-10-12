@@ -12,6 +12,7 @@ set(SOURCE_FILES src/main.cpp
                  src/AlgorithmVisualizer/AlgorithmVisualizer.cpp
                  src/Algorithm/BubbleSort.cpp
                  src/Algorithm/InsertSort.cpp
+                 src/Algorithm/SelectionSort.cpp
                  src/Algorithm/AlgTypesEnum.cpp
                  src/Helpers/Helpers.cpp)
 
