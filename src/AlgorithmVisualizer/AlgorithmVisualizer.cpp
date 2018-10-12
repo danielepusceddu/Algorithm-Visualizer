@@ -18,15 +18,14 @@ namespace Alg{
 
 
     void Visualizer::update(){
-        if(algorithm->isFinished() == false){
+
             window->clear();
 
-            algorithm->step();
             selectedIndexes = algorithm->selectedElements();
             visualizeVec();
-            
+            algorithm->step();
+
             window->display();
-        }
     }
 
 
