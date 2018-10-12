@@ -14,21 +14,21 @@ namespace Alg{
 
         while(i < n){
 
-            //swapShowed is so we can show the changes in the selected elements
-            while(j >= 0 && (vec[j] > vec[j + 1] || swapShowed)){
+            //swapShown is so we can show the changes in the selected elements
+            while(j >= 0 && (vec[j] > vec[j + 1] || swapShown)){
 
                 //If we haven't swapped
                 //(vec[j] > vec[j + 1]) will be false after executing this block
-                //swapShowed will allow us to keep sorting
-                if(!swapShowed){
+                //swapShown will allow us to keep sorting
+                if(!swapShown){
                     vec[j + 1] = vec[j];
                     vec[j] = key;
-                    swapShowed = true;
+                    swapShown = true;
                     return; 
                 }
 
                 j--;
-                swapShowed = false;
+                swapShown = false;
                 if(j >= 0) //this check is to avoid showing vec[-1] as a selected element
                     return; //yield
             }

@@ -8,7 +8,7 @@ namespace Alg{
         int key;
         int i = 1;
         int j = 0;
-        bool swapShowed = false;
+        bool swapShown = false;
 
         public:
         InsertSort(std::vector<int> &vector);
