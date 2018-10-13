@@ -23,7 +23,7 @@ namespace Alg{
         int numVecElements;
 
         unsigned int randSeed;
-        std::unique_ptr<sf::RenderWindow> window;
+        sf::RenderWindow window;
         std::unique_ptr<Algorithm> algorithm;
         std::vector<int> vec;
         std::vector<int> selectedIndexes;

@@ -19,13 +19,13 @@ namespace Alg{
 
     void Visualizer::update(){
 
-            window->clear();
+            window.clear();
 
             selectedIndexes = algorithm->selectedElements();
             visualizeVec();
             algorithm->step();
 
-            window->display();
+            window.display();
     }
 
 
@@ -34,7 +34,7 @@ namespace Alg{
         sf::Event event;
 
         //While there are events to process
-        while(window->pollEvent(event)){
+        while(window.pollEvent(event)){
             switch(event.type){
                 //User clicked the button to close the window
                 case sf::Event::Closed:
@@ -44,7 +44,7 @@ namespace Alg{
                 //User resized the window
                 case sf::Event::Resized:{
                 sf::FloatRect newViewRect{0, 0, (float)event.size.width, (float)event.size.height};
-                window->setView(sf::View{newViewRect});
+                window.setView(sf::View{newViewRect});
                 }
                 break;
 
@@ -80,8 +80,8 @@ namespace Alg{
     //PRIVATE METHODS
 
     void Visualizer::initWindow(){
-        window.reset(new sf::RenderWindow{sf::VideoMode(1080, 720), "Algorithm Visualizer"});
-        window->setVerticalSyncEnabled(true);
+        window.create(sf::VideoMode(1080, 720), "Algorithm Visualizer");
+        window.setVerticalSyncEnabled(true);
     }
 
 
@@ -126,7 +126,7 @@ namespace Alg{
 
     void Visualizer::visualizeVec(){
         //Get size of window
-        sf::Vector2u windowSize = window->getSize();
+        sf::Vector2u windowSize = window.getSize();
 
         //Size of vector and max element
         const int vecSize = vec.size();
@@ -157,7 +157,7 @@ namespace Alg{
             //Apply changes to the rectangle and draw it
             rectangle.setSize(sf::Vector2f{rectWidth, rectHeight});
             rectangle.setPosition(rectPos);
-            window->draw(rectangle);
+            window.draw(rectangle);
         }
     }
 
