@@ -121,6 +121,7 @@ namespace Alg{
 
             case Alg::Type::SelectionSort:
             this->algorithm.reset(new SelectionSort{vec});
+            break;
         }
     }
 
