@@ -11,13 +11,11 @@ namespace Alg{
 
     void BubbleSort::step(){
         while(finished == false){
-            if(i == 1)
-                swapped = false;
 
             while(i < n){
                 if(vec[i - 1] > vec[i]){
                     swap(vec[i - 1], vec[i]);
-                    swapped = true;
+                    lastSwap = i;
                     return; //yield to show the swap taking place.                    
                 }
 
@@ -28,8 +26,10 @@ namespace Alg{
                     return; //yield
             }
 
-            if(swapped){
+            if(lastSwap > 1){
                 i = 1;
+                n = lastSwap;
+                lastSwap = 0;
                 return; //yield
             }
 
@@ -40,20 +40,23 @@ namespace Alg{
 
     void BubbleSort::run(){
         int n = vec.size();
-        bool swapped = true;
+        int lastSwap;
 
         //Loop till we have a cycle with no swaps happening
-        while(swapped){
-            swapped = false;
+        while(n > 1){
+            lastSwap = 0;
 
             //For each vector element starting at 1
             for(int i = 1; i < n; i++){
                 //If previous element is greater, swap
                 if(vec[i - 1] > vec[i]){
                     swap(vec[i - 1], vec[i]);
-                    swapped = true;
+                    lastSwap = i;
                 }
             }
+
+            //Do not check the already sorted part of the vector
+            n = lastSwap;
         }
 
         finished = true;

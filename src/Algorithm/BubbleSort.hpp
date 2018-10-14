@@ -6,7 +6,7 @@ namespace Alg{
     class BubbleSort : public Algorithm{
         private:
         int i = 1;
-        bool swapped = false;
+        int lastSwap = 0;
         void swap(int &x, int &y);
 
         public:
