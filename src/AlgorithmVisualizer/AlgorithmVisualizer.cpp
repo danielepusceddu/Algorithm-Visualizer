@@ -45,6 +45,7 @@ namespace Alg{
                 case sf::Event::Resized:{
                 sf::FloatRect newViewRect{0, 0, (float)event.size.width, (float)event.size.height};
                 window.setView(sf::View{newViewRect});
+                draw();
                 }
                 break;
 
@@ -60,6 +61,7 @@ namespace Alg{
                     //R (restart visualization)
                     case sf::Keyboard::R:
                     reset();
+                    draw();
                     break;
 
                     default:
@@ -122,6 +124,12 @@ namespace Alg{
         }
     }
 
+
+    void Visualizer::draw(){
+        window.clear();
+        visualizeVec();
+        window.display();
+    }
 
 
     void Visualizer::visualizeVec(){

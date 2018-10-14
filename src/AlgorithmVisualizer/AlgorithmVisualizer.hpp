@@ -35,6 +35,7 @@ namespace Alg{
         void initAlg();
         void initVec();
         void visualizeVec();
+        void draw();
         void reset();
 
         public:
