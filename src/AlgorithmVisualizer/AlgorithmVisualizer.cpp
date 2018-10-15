@@ -11,6 +11,8 @@ namespace Alg{
 
     Visualizer::Visualizer(Alg::Type alg, int numElements)
         : algType{alg}, numVecElements{numElements} {
+        //randSeed = time
+        randSeed = std::chrono::system_clock::now().time_since_epoch().count();
         initWindow();
         reset();
     }
@@ -18,14 +20,9 @@ namespace Alg{
 
 
     void Visualizer::update(){
-
-            window.clear();
-
             selectedIndexes = algorithm->selectedElements();
-            visualizeVec();
+            draw();
             algorithm->step();
-
-            window.display();
     }
 
 
@@ -89,8 +86,6 @@ namespace Alg{
 
 
     void Visualizer::reset(){
-        //randSeed = time
-        randSeed = std::chrono::system_clock::now().time_since_epoch().count();
         initVec();
         initAlg();
     }
