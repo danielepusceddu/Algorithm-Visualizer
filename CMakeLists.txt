@@ -7,6 +7,9 @@ set(CMAKE_CXX_STANDARD 11)
 #Extended Warnings
 set(CMAKE_CXX_FLAGS -Wall)
 
+#Optimization
+set(CMAKE_CXX_FLAGS -O3)
+
 #Source file list
 set(SOURCE_FILES src/main.cpp 
                  src/AlgorithmVisualizer/AlgorithmVisualizer.cpp
