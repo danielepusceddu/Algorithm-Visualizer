@@ -11,6 +11,8 @@
 #include "../Algorithm/InsertSort.hpp"
 #include "../Algorithm/SelectionSort.hpp"
 #include "../Algorithm/AlgTypesEnum.hpp"
+#include "../../extlibs/gif-h/gif.h"
+
 
 namespace Alg{
 
@@ -42,6 +44,7 @@ namespace Alg{
         std::unique_ptr<Algorithm> algorithm;
         std::vector<int> selectedIndexes;
         std::chrono::milliseconds msBetweenEachStep;
+        bool visualizationFinished = false;
 
         //Vector to sort
         std::vector<int> vec;
@@ -53,6 +56,10 @@ namespace Alg{
 
         //SFML Window to draw on
         sf::RenderWindow window;
+        std::vector<sf::Image> savedFrames;
+
+        //Gif to write
+        GifWriter gif;
 
 
         /////////////////
@@ -64,6 +71,8 @@ namespace Alg{
         void visualizeVec();
         void draw();
         void reset();
+        void initGif();
+        void saveFrame();
     };
 
 }

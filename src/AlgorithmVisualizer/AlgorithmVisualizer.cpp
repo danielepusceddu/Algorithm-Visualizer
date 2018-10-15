@@ -22,6 +22,8 @@ namespace Alg{
         std::chrono::milliseconds lastUpdate{0};
         
         initWindow();
+        initGif();
+        //GifBegin(&gif, "visualization.gif",)
         while(running){
             //Handle user input (such as closing the window)
             handleEvents();
@@ -29,10 +31,20 @@ namespace Alg{
             //Get current time in ms
             std::chrono::milliseconds now = Helpers::now_ms();
 
-            //If enough time has passed, update the visualization
-            if(lastUpdate + msBetweenEachStep <= now){
+            //If visualization hasn't finished and enough time has passed, update the visualization
+            if(!visualizationFinished && lastUpdate + msBetweenEachStep <= now){
+
+                //This is so we can visualize the sorted array
+                if(algorithm ->isFinished())
+                    visualizationFinished = true;
+
                 update();
                 lastUpdate = now;
+                saveFrame();
+
+
+                if(visualizationFinished)
+                    GifEnd(&gif);
             }
 
         } //end while running
@@ -99,10 +111,8 @@ namespace Alg{
 
 
 
-    //PRIVATE METHODS
-
     void Visualizer::initWindow(){
-        window.create(sf::VideoMode(1080, 720), "Algorithm Visualizer");
+        window.create(sf::VideoMode(960, 720), "Algorithm Visualizer");
         window.setVerticalSyncEnabled(true);
     }
 
@@ -186,6 +196,31 @@ namespace Alg{
             rectangle.setPosition(rectPos);
             window.draw(rectangle);
         }
+    }
+
+
+    void Visualizer::initGif(){
+        int delayHundreths = msBetweenEachStep.count() / 100;
+        sf::Vector2u windowSize = window.getSize();
+        GifBegin(&gif, "visualization.gif", windowSize.x, windowSize.y, delayHundreths);
+    }
+
+
+    void Visualizer::saveFrame(){
+        int delayHundreths = msBetweenEachStep.count() / 100;
+        sf::Vector2u windowSize = window.getSize();
+
+        //Texture init
+        sf::Texture texture;
+        texture.create(windowSize.x, windowSize.y);
+        texture.update(window);
+
+        //Image init
+        sf::Image img = texture.copyToImage();
+
+        //Getting pixel array and writing it to the gif
+        const unsigned char *pixelArray = img.getPixelsPtr();
+        GifWriteFrame(&gif, pixelArray, windowSize.x, windowSize.y, delayHundreths, 8, true);
     }
 
 }
