@@ -22,6 +22,7 @@ namespace Alg{
             j = i + 1;
         }
 
+        finished = true;
     }
 
 
@@ -37,6 +38,8 @@ namespace Alg{
 
             swap(vec[i], vec[minimum]);
         }
+
+        finished = true;
     }
 
 
