@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-std::chrono::milliseconds now_ms();
 void parseArgs(int argc, char **argv, int &numElements, std::chrono::milliseconds &msToSleep, Alg::Type &alg);
 void printArgs(Alg::Type alg, int numElements, std::chrono::milliseconds msToSleep);
 
@@ -12,42 +11,17 @@ int main(int argc, char **argv){
     int numElements = 50;
     std::chrono::milliseconds msToSleep{25};
     
-
     //Parse command line arguments for visualizer settings and time to sleep
     parseArgs(argc, argv, numElements, msToSleep, algorithm);
 
     //Let the user know about current visualizer settings
     printArgs(algorithm, numElements, msToSleep);
     
-    //Construct the visualizer
-    Alg::Visualizer visualizer{algorithm, numElements};
-    
-    //Start the main loop
-    std::chrono::milliseconds lastUpdate{0};
-    while(visualizer.isRunning()){
-
-        //Handle user input (such as closing the window)
-        visualizer.handleEvents();
-
-        //Get current time in ms
-        std::chrono::milliseconds now = now_ms();
-
-        //If enough time has passed, update the visualization
-        if(lastUpdate + msToSleep <= now){
-            visualizer.update();
-            lastUpdate = now;
-        }
-        
-    } //end main loop
+    //Construct the visualizer and run it to completion
+    Alg::Visualizer visualizer{algorithm, numElements, msToSleep};
+    visualizer.run();
 
     return 0;
-}
-
-std::chrono::milliseconds now_ms(){
-    using namespace std::chrono;
-    nanoseconds ns = system_clock::now().time_since_epoch();
-    milliseconds ms = duration_cast<milliseconds>(ns);
-    return ms;
 }
 
 
@@ -97,5 +71,5 @@ void parseArgs(int argc, char **argv, int &numElements, std::chrono::millisecond
 void printArgs(Alg::Type alg, int numElements, std::chrono::milliseconds msToSleep){
     std::cout << "Algorithm: " << Alg::algType2string(alg) << "\n"
               << "Size of Vector: " << numElements << "\n"
-              << "Sleeping " << msToSleep.count() << "ms every loop cycle." << std::endl;
+              << "Time between each algorithm step: " << msToSleep.count() << "ms" << std::endl;
 }

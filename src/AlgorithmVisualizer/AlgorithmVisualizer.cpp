@@ -1,24 +1,47 @@
 #include "AlgorithmVisualizer.hpp"
-#include <iostream>
 
 namespace Alg{
-
+    ////////////////
     //Public Methods
-    bool Visualizer::isRunning(){
-        return running;
-    }
+    ////////////////
 
-
-    Visualizer::Visualizer(Alg::Type alg, int numElements)
-        : algType{alg}, numVecElements{numElements} {
+    //Constructor with initializer list
+    Visualizer::Visualizer(Alg::Type alg, int numElements, std::chrono::milliseconds msBetweenSteps)
+        : algType{alg}, msBetweenEachStep{msBetweenSteps}, numVecElements{numElements}
+    {
         //randSeed = time
         randSeed = std::chrono::system_clock::now().time_since_epoch().count();
+        randEng = std::default_random_engine{randSeed};
         initWindow();
         reset();
     }
 
 
+    //Main loop
+    void Visualizer::run(){
+        std::chrono::milliseconds lastUpdate{0};
+        
+        initWindow();
+        while(running){
+            //Handle user input (such as closing the window)
+            handleEvents();
 
+            //Get current time in ms
+            std::chrono::milliseconds now = Helpers::now_ms();
+
+            //If enough time has passed, update the visualization
+            if(lastUpdate + msBetweenEachStep <= now){
+                update();
+                lastUpdate = now;
+            }
+
+        } //end while running
+    } //end run()
+
+
+    /////////////////
+    //Private Methods
+    /////////////////
     void Visualizer::update(){
             selectedIndexes = algorithm->selectedElements();
             draw();
@@ -98,7 +121,7 @@ namespace Alg{
         for(int i = 0; i < numVecElements; i++)
             vec[i] = i + 1;
 
-        std::shuffle(vec.begin(), vec.end(), std::default_random_engine{randSeed});
+        std::shuffle(vec.begin(), vec.end(), randEng);
     }
 
 
