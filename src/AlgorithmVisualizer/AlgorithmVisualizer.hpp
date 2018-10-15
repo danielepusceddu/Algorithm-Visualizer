@@ -22,7 +22,7 @@ namespace Alg{
         /////////////////
         //Public Methods
         /////////////////
-        Visualizer(Alg::Type alg, int numElements, std::chrono::milliseconds msBetweenSteps);
+        Visualizer(Alg::Type alg, int numElements, std::chrono::milliseconds msBetweenSteps, bool record);
         void run();
         void update();
         void handleEvents();
@@ -59,6 +59,7 @@ namespace Alg{
         std::vector<sf::Image> savedFrames;
 
         //Gif to write
+        bool saveToGif = false;
         GifWriter gif;
 
 

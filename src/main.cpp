@@ -2,36 +2,41 @@
 #include <iostream>
 #include <string>
 
-void parseArgs(int argc, char **argv, int &numElements, std::chrono::milliseconds &msToSleep, Alg::Type &alg);
-void printArgs(Alg::Type alg, int numElements, std::chrono::milliseconds msToSleep);
+void parseArgs(int argc, char **argv, int &numElements, std::chrono::milliseconds &msToSleep, Alg::Type &alg, bool &record);
+void printArgs(Alg::Type alg, int numElements, std::chrono::milliseconds msToSleep, bool record);
 
 int main(int argc, char **argv){
     //Initialize visualizer settings with default values
     Alg::Type algorithm = Alg::Type::BubbleSort;
-    int numElements = 50;
     std::chrono::milliseconds msToSleep{25};
+    int numElements = 50;
+    bool record = false;
     
     //Parse command line arguments for visualizer settings and time to sleep
-    parseArgs(argc, argv, numElements, msToSleep, algorithm);
+    parseArgs(argc, argv, numElements, msToSleep, algorithm, record);
 
     //Let the user know about current visualizer settings
-    printArgs(algorithm, numElements, msToSleep);
+    printArgs(algorithm, numElements, msToSleep, record);
     
     //Construct the visualizer and run it to completion
-    Alg::Visualizer visualizer{algorithm, numElements, msToSleep};
+    Alg::Visualizer visualizer{algorithm, numElements, msToSleep, record};
     visualizer.run();
 
     return 0;
 }
 
 
-void parseArgs(int argc, char **argv, int &numElements, std::chrono::milliseconds &msToSleep, Alg::Type &alg){
+void parseArgs(int argc, char **argv, int &numElements, std::chrono::milliseconds &msToSleep, Alg::Type &alg, bool &record){
     //For each possible command line option
-    for(int i = 1; i < argc - 1; i++){
+    for(int i = 1; i < argc; i++){
         std::string arg{argv[i]};
 
+        //If option is gif recording flag
+        if(arg == "-r")
+            record = true;
+
         //If option is number of elements
-        if(arg == "-e"){
+        else if(arg == "-e"){
             int arg2int = std::atoi(argv[i+1]);
 
             //If next arg is a valid amount of elements
@@ -68,8 +73,11 @@ void parseArgs(int argc, char **argv, int &numElements, std::chrono::millisecond
 } //end parseArgs
 
 
-void printArgs(Alg::Type alg, int numElements, std::chrono::milliseconds msToSleep){
+void printArgs(Alg::Type alg, int numElements, std::chrono::milliseconds msToSleep, bool record){
     std::cout << "Algorithm: " << Alg::algType2string(alg) << "\n"
               << "Size of Vector: " << numElements << "\n"
               << "Time between each algorithm step: " << msToSleep.count() << "ms" << std::endl;
+
+    if(record)
+        std::cout << "Saving the visualization to .gif" << std::endl;
 }

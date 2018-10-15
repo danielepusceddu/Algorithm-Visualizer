@@ -6,8 +6,8 @@ namespace Alg{
     ////////////////
 
     //Constructor with initializer list
-    Visualizer::Visualizer(Alg::Type alg, int numElements, std::chrono::milliseconds msBetweenSteps)
-        : algType{alg}, msBetweenEachStep{msBetweenSteps}, numVecElements{numElements}
+    Visualizer::Visualizer(Alg::Type alg, int numElements, std::chrono::milliseconds msBetweenSteps, bool record)
+        : algType{alg}, msBetweenEachStep{msBetweenSteps}, numVecElements{numElements}, saveToGif{record}
     {
         //randSeed = time
         randSeed = std::chrono::system_clock::now().time_since_epoch().count();
@@ -20,10 +20,11 @@ namespace Alg{
     //Main loop
     void Visualizer::run(){
         std::chrono::milliseconds lastUpdate{0};
-        
+
+        if(saveToGif)
+            initGif();
+
         initWindow();
-        initGif();
-        //GifBegin(&gif, "visualization.gif",)
         while(running){
             //Handle user input (such as closing the window)
             handleEvents();
@@ -40,11 +41,12 @@ namespace Alg{
 
                 update();
                 lastUpdate = now;
-                saveFrame();
 
-
-                if(visualizationFinished)
-                    GifEnd(&gif);
+                if(saveToGif){
+                    saveFrame();
+                    if(visualizationFinished)
+                        GifEnd(&gif);
+                }
             }
 
         } //end while running
@@ -55,9 +57,9 @@ namespace Alg{
     //Private Methods
     /////////////////
     void Visualizer::update(){
-            selectedIndexes = algorithm->selectedElements();
-            draw();
-            algorithm->step();
+        selectedIndexes = algorithm->selectedElements();
+        draw();
+        algorithm->step();
     }
 
 
