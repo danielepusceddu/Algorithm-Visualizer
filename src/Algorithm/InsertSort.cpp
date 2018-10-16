@@ -35,10 +35,11 @@ namespace Alg{
 
             i++;
             j = i - 1;
-            key = vec[i];
 
-            if(i < n) //this check is to avoid showing vec[n] as a selected element
+            if(i < n){ //this check is to avoid showing vec[n] as a selected element
+                key = vec[i];
                 return; //yield
+            }
         }
 
         finished = true;
