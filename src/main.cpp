@@ -36,7 +36,7 @@ void parseArgs(int argc, char **argv, int &numElements, std::chrono::millisecond
             record = true;
 
         //If option is number of elements
-        else if(arg == "-e"){
+        else if(arg == "-e" && i < argc - 1){
             int arg2int = std::atoi(argv[i+1]);
 
             //If next arg is a valid amount of elements
@@ -48,7 +48,7 @@ void parseArgs(int argc, char **argv, int &numElements, std::chrono::millisecond
 
 
         //Else if option is milliseconds to sleep in each loop
-        else if(arg == "-s"){
+        else if(arg == "-s" && i < argc - 1){
             int arg2int = std::atoi(argv[i+1]);
 
             if(arg2int >= 0){
@@ -59,7 +59,7 @@ void parseArgs(int argc, char **argv, int &numElements, std::chrono::millisecond
 
 
         //Else of option is algorithm to visualize
-        else if(arg == "-a"){
+        else if(arg == "-a" && i < argc - 1){
             std::string algArg{argv[i + 1]};
             Alg::Type alg2arg = Alg::string2algType(algArg);
 
