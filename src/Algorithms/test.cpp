@@ -1,8 +1,7 @@
 //Quick and dirty code to check accuracy of Algorithm objects
 //define TO_TEST with the name of the Algorithm Class to test
 
-#include "Algorithm.hpp"
-#include "BubbleSort.hpp"
+#include "algorithms.hpp"
 #include <algorithm>
 #include <memory>
 #include <iostream>
