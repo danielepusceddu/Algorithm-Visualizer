@@ -13,10 +13,10 @@ set(CMAKE_CXX_FLAGS -O3)
 #Source file list
 set(SOURCE_FILES src/main.cpp 
                  src/AlgorithmVisualizer/AlgorithmVisualizer.cpp
-                 src/Algorithm/BubbleSort.cpp
-                 src/Algorithm/InsertSort.cpp
-                 src/Algorithm/SelectionSort.cpp
-                 src/Algorithm/AlgTypesEnum.cpp
+                 src/Algorithms/BubbleSort/BubbleSort.cpp
+                 src/Algorithms/InsertSort/InsertSort.cpp
+                 src/Algorithms/SelectionSort/SelectionSort.cpp
+                 src/Algorithms/AlgTypesEnum.cpp
                  src/Helpers/Helpers.cpp
                  extlibs/gif-h/gif.cpp)
 

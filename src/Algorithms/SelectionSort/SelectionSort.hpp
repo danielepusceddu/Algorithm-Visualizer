@@ -1,5 +1,5 @@
 #pragma once
-#include "Algorithm.hpp"
+#include "../Algorithm/Algorithm.hpp"
 
 namespace Alg{
 

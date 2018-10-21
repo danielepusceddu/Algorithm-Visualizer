@@ -7,10 +7,7 @@
 #include <array>
 #include <chrono>
 #include "../Helpers/Helpers.hpp"
-#include "../Algorithm/BubbleSort.hpp"
-#include "../Algorithm/InsertSort.hpp"
-#include "../Algorithm/SelectionSort.hpp"
-#include "../Algorithm/AlgTypesEnum.hpp"
+#include "../Algorithms/algorithms.hpp"
 #include "../../extlibs/gif-h/gif.h"
 
 
