@@ -202,7 +202,7 @@ namespace Alg{
 
 
     void Visualizer::initGif(){
-        int delayHundreths = msBetweenEachStep.count() / 100;
+        int delayHundreths = msBetweenEachStep.count() / 10;
         sf::Vector2u windowSize = window.getSize();
         GifBegin(&gif, "visualization.gif", windowSize.x, windowSize.y, delayHundreths);
     }
